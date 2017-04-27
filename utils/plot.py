@@ -56,8 +56,8 @@ def plot_probabilities(test_img, top5, signs_class):
         plt.barh(arange(1, 6, 1), top5.values[i, :])
         labs = [signs_class[j] for j in top5.indices[i]]
         plt.yticks(arange(1, 6, 1), labs)
-    plt.show()
     plt.savefig('./out/probabilities.png')
+    plt.show()
 
 def plot_learing_progress(f_name):
     with open(f_name, 'rt') as dfile:
@@ -70,12 +70,12 @@ def plot_learing_progress(f_name):
             x = array(range(0, len(item[0])))
             y = [ float(i) for i in item[0] ]
             xnew = linspace(x.min(), x.max(), 100)
-            plt.plot(xnew, spline(x, y, xnew), label=item[1] + ' on test set')
+            plt.plot(xnew, spline(x, y, xnew), label=item[1] + ' during training')
             plt.xlabel('Epoch')
             plt.ylabel(item[1])
             plt.legend()
-            plt.show()
             plt.savefig('./out/learing_progress_' + item[1].lower() + '.png')
+            plt.show()
 
 if __name__ == '__main__':
     plot_learing_progress('../logs/acc-loss.csv')

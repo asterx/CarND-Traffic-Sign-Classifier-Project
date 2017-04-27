@@ -4,3 +4,5 @@ data
 *.swp
 *.p
 nohup.out
+.DS_Store
+*/__pycache__
