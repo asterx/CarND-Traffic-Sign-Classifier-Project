@@ -142,12 +142,22 @@ The only sign that caused problems was "Pedestrians". I think it happen b/c of s
 * Some images are too dark (which means that more pre-procesing is required; it might be helpful to remove too dark images from training set)
 * Pedestrians and Road narrows on the right look similar in some ways (same shape of the sign, same dark content). I think including more different images of these signs in testing set could help network learn difference better.
 
+We should also keep in mind fact that success classification result 88% is significantly less then 95% and 95% on the test and validation dataset respectively. It is clear that model overfitting and there is more work to be done here. I see at least two obvious steps that could help solve this issue - spend more time with configuring right regularization and better prepared training data. I'll definetly pay more attention to this in my next assignment.
+
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 ![Probabilities][probabilities]
 
+First couple of signs are quite easy and models is very certain about it's predictions (specially with 1st one - "Speed limit (50km/h)"). Signs share similar round shape, red color and digits inside. 100% certainty for 50mk/h is a bad sign of over fitting, I'd expect probability graph to look more like one for 60km/h (which indicates that model understood shape and colors and choosing between digits). 
+
+3d sign ("Pedestrians") shows that training set have issues and doesn't contain enough images with that and other signs.
+Model is certain about shape and color sometimes but final result is absolutely incorrect.
+
+4th sign ("No passing") is again a good example that shows that model knows about shape and color and making deciding based on more higher level.
+
+Rest of results again shows signs of over fitting.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
