@@ -17,13 +17,19 @@ def plot_train_images(X_train, y_train, n_classes, is_gray = False):
     plt.savefig('./out/train_images.png')
     plt.show()
 
-def plot_distribution(X_train, y_train, n_classes):
-    samples_count = []
+def plot_distribution(X_train, y_train, X_test, y_test, n_classes):
+    train_samples_count = []
+    test_samples_count = []
+
     for i in range(0, n_classes):
         x_selected = X_train[y_train == i]
-        samples_count.append(len(x_selected))
+        train_samples_count.append(len(x_selected))
+        x_selected = X_test[y_test == i]
+        test_samples_count.append(len(x_selected))
+
     plt.figure(figsize=(12, 4))
-    plt.bar(range(0, n_classes), samples_count)
+    plt.bar(range(0, n_classes), train_samples_count)
+    plt.bar(range(0, n_classes), test_samples_count)
     plt.title('Distribution')
     plt.xlabel('Classes')
     plt.ylabel('Images')
